@@ -1,4 +1,4 @@
-import { Category } from "../model/Categories";
+import { Category } from '../model/Categories';
 
 // DTO - Director Transform Object
 interface ICreateCategoryDTO {
