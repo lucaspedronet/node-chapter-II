@@ -1,4 +1,4 @@
-import { CategoriesRepository } from '../repositories/CategoriesRepository';
+import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
 /**
  * [*] - Definir tipo de retorno
  * [*] - Alterar o retorno do erro
@@ -11,7 +11,7 @@ interface IRequestDTO {
 }
 
 class CreateCategoryService {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ description, name }: IRequestDTO): void {
     const categoryAlreadyExist = this.categoriesRepository.findByName(name);
@@ -20,7 +20,7 @@ class CreateCategoryService {
       throw new Error('Category Already exist!');
     }
 
-    this.categoriesRepository.crete({ name, description });
+    this.categoriesRepository.create({ name, description });
   }
 }
 

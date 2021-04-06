@@ -1,19 +1,19 @@
 import { Category } from '../model/Categories';
-
+import { ICategoriesRepository } from './ICategoriesRepository';
 // DTO - Director Transform Object
 interface ICreateCategoryDTO {
   description: string;
   name: string;
 }
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
     this.categories = [];
   }
 
-  crete({ description, name }: ICreateCategoryDTO): void {
+  create({ description, name }: ICreateCategoryDTO): void {
     const category = new Category();
 
     Object.assign(category, {
