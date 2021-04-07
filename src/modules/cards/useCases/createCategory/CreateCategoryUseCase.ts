@@ -1,4 +1,4 @@
-import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 /**
  * [*] - Definir tipo de retorno
  * [*] - Alterar o retorno do erro
@@ -10,7 +10,7 @@ interface IRequestDTO {
   description: string;
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ description, name }: IRequestDTO): void {
@@ -24,4 +24,4 @@ class CreateCategoryService {
   }
 }
 
-export { CreateCategoryService };
+export { CreateCategoryUseCase };

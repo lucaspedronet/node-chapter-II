@@ -30,7 +30,7 @@ class SpecificationRepository implements ISpecificationsRepository {
   }
 
   list(): Specification[] {
-    throw new Error('Method not implemented.');
+    return this.specifications;
   }
 }
 
