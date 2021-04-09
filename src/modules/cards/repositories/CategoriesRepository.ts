@@ -6,11 +6,24 @@ interface ICreateCategoryDTO {
   name: string;
 }
 
+// Singleton - conceito de uma única instância para toda aplicação.
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
-  constructor() {
+  // variável que armazena a instância única
+  private static INSTANCE: CategoriesRepository;
+
+  private constructor() {
     this.categories = [];
+  }
+
+  // método criador da instância
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+
+    return CategoriesRepository.INSTANCE;
   }
 
   create({ description, name }: ICreateCategoryDTO): void {
