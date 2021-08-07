@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mr.book Documentation",
+    "description": "This is an API Mr.book",
+    "version": "1.0.0",
+    "contact": {
+      "email": "lucaspedrolbg@gmail.com",
+      "whats": "(63) 98423-6795"
+    }
+  }
+}
