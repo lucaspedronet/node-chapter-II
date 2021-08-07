@@ -1,5 +1,5 @@
-import { Category } from '../model/Categories';
-import { ICategoriesRepository } from './ICategoriesRepository';
+import { Category } from '../../model/Categories';
+import { ICategoriesRepository } from '../ICategoriesRepository';
 // DTO - Director Transform Object
 interface ICreateCategoryDTO {
   description: string;
