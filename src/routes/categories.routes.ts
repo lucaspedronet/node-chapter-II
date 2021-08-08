@@ -20,6 +20,7 @@ categoriesRouters.get('/', (request, response) => {
 
 // eslint-disable-next-line prettier/prettier
 categoriesRouters.post('/imports', upLoad.single('file'), (request, response) => {
+
     importCategoryController.handle(request, response);
   }
 );

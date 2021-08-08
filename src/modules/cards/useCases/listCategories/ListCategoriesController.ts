@@ -6,6 +6,7 @@ class ListCategoriesController {
   constructor(private categoriesRepository: ListCategoriesUseCase) {}
 
   handle(request: Request, response: Response): Response<void> {
+    console.log(request);
     const listCategories = this.categoriesRepository.execute();
 
     return response.status(200).json(listCategories);
