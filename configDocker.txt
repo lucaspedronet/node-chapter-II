@@ -46,6 +46,7 @@ Pronto, imagem rodando!
 $ docker-compose up -d
 $ docker-compose down -v --rmi local
 $ docker-compose start
+$ docker-compose up -d —force-recreate
 $ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' NOME_CONTAINER
 $ docker exec NOME_IMAGE cat /etc/hosts
 $ docker exec -it NOME_CONTAINER /bin/bash

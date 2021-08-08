@@ -1,18 +1,20 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import { createCategoryController } from '../modules/cards/useCases/createCategory';
-import { importCategoryController } from '../modules/cards/useCases/importCategory';
-import { listCategoriesController } from '../modules/cards/useCases/listCategories';
+import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
+import { importCategoryController } from '../modules/cars/useCases/importCategory';
+import { listCategoriesController } from '../modules/cars/useCases/listCategories';
 
 const categoriesRouters = Router();
 const upLoad = multer({
   dest: './temp',
 });
 
-categoriesRouters.post('/', (request, response) => {
-  return createCategoryController.handle(request, response);
-});
+// instance controllers
+const createCategoryController = new CreateCategoryController();
+
+// routes
+categoriesRouters.post('/', createCategoryController.handle);
 
 categoriesRouters.get('/', (request, response) => {
   return listCategoriesController.handle(request, response);

@@ -31,6 +31,7 @@ export class CreateCategories1628408362053 implements MigrationInterface {
           {
             name: 'updated_at',
             type: 'timestamp',
+            isNullable: true,
           },
         ],
       })
