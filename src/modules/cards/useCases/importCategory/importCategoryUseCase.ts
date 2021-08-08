@@ -32,6 +32,7 @@ class ImportCategoryUseCase {
           });
         })
         .on('end', () => {
+          fs.promises.unlink(file.path); // remove o arquivo da pasta temp
           resolve(this.categories);
         })
         .on('error', (error) => {
