@@ -10,6 +10,11 @@ class UserRepository implements IUserRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  async findByEmail(email: string): Promise<User | undefined> {
+    const userAlreadyExist = await this.repository.findOne({ email });
+
+    return userAlreadyExist;
+  }
   async create({
     name,
     username,
