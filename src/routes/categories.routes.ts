@@ -2,8 +2,8 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
-import { importCategoryController } from '../modules/cars/useCases/importCategory';
-import { listCategoriesController } from '../modules/cars/useCases/listCategories';
+import { ImportCategoryController } from '../modules/cars/useCases/importCategory/importCategoryController';
+import { ListCategoriesController } from '../modules/cars/useCases/listCategories/ListCategoriesController';
 
 const categoriesRouters = Router();
 const upLoad = multer({
@@ -12,19 +12,15 @@ const upLoad = multer({
 
 // instance controllers
 const createCategoryController = new CreateCategoryController();
+const listCategoriesController = new ListCategoriesController();
+const importCategoryController = new ImportCategoryController();
 
 // routes
 categoriesRouters.post('/', createCategoryController.handle);
 
-categoriesRouters.get('/', (request, response) => {
-  return listCategoriesController.handle(request, response);
-});
+categoriesRouters.get('/', listCategoriesController.handle);
 
 // eslint-disable-next-line prettier/prettier
-categoriesRouters.post('/imports', upLoad.single('file'), (request, response) => {
-
-    importCategoryController.handle(request, response);
-  }
-);
+categoriesRouters.post('/imports', upLoad.single('file'), importCategoryController.handle);
 
 export { categoriesRouters };
