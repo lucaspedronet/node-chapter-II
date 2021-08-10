@@ -18,6 +18,9 @@ class User {
   email: string;
 
   @Column()
+  avatar: string;
+
+  @Column()
   driver_licenses: string;
 
   @Column()
