@@ -1,4 +1,5 @@
-import { User } from '../../entities/Users';
+import { User } from '@modules/Accounts/entities/Users';
+
 import { ICreateUser } from './ICreateUser';
 
 interface IUserRepository {

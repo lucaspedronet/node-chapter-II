@@ -1,6 +1,7 @@
 import { v4 as uuid4 } from 'uuid';
 
-import { User } from '../../entities/Users';
+import { User } from '@modules/Accounts/entities/Users';
+
 import { ICreateUser } from '../dtos/ICreateUser';
 import { IUserRepository } from '../dtos/IUserRepository';
 
