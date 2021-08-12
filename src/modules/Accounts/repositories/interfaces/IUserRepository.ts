@@ -1,4 +1,4 @@
-import { User } from '@modules/Accounts/entities/Users';
+import { User } from '@modules/Accounts/infra/typeorm/entities/Users';
 
 import { ICreateUser } from './ICreateUser';
 

@@ -1,6 +1,6 @@
-import { AppError } from '@errors/AppError';
-import { ICreateUser } from '@modules/Accounts/repositories/dtos/ICreateUser';
-import { UserRepositoryInMemory } from '@modules/Accounts/repositories/in-memory/UserRepositoryInMemory';
+import { UserRepositoryInMemory } from '@modules/Accounts/repositories/fakes-memory/UserRepositoryInMemory';
+import { ICreateUser } from '@modules/Accounts/repositories/interfaces/ICreateUser';
+import { AppError } from '@shared/errors/AppError';
 
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';

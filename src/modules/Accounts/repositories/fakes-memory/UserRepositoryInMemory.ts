@@ -1,9 +1,9 @@
 import { v4 as uuid4 } from 'uuid';
 
-import { User } from '@modules/Accounts/entities/Users';
+import { User } from '@modules/Accounts/infra/typeorm/entities/Users';
 
-import { ICreateUser } from '../dtos/ICreateUser';
-import { IUserRepository } from '../dtos/IUserRepository';
+import { ICreateUser } from '../interfaces/ICreateUser';
+import { IUserRepository } from '../interfaces/IUserRepository';
 
 class UserRepositoryInMemory implements IUserRepository {
   private userRepository: User[] = [];

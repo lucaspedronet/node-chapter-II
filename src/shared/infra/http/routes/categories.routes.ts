@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import { ensureAuthenticated } from '@middleware/ensureAuthenticated';
 import { CreateCategoryController } from '@modules/cars/useCases/createCategory/CreateCategoryController';
 import { ImportCategoryController } from '@modules/cars/useCases/importCategory/importCategoryController';
 import { ListCategoriesController } from '@modules/cars/useCases/listCategories/ListCategoriesController';
+import { ensureAuthenticated } from '@shared/infra/http/middleware/ensureAuthenticated';
 
 const categoriesRouters = Router();
 const upLoad = multer({
