@@ -6,6 +6,8 @@ import { ImportCategoryController } from '@modules/cars/useCases/importCategory/
 import { ListCategoriesController } from '@modules/cars/useCases/listCategories/ListCategoriesController';
 import { ensureAuthenticated } from '@shared/infra/http/middleware/ensureAuthenticated';
 
+import { ensureAdmin } from '../middleware/ensureAdmin';
+
 const categoriesRouters = Router();
 const upLoad = multer({
   dest: './temp',
@@ -17,13 +19,22 @@ const listCategoriesController = new ListCategoriesController();
 const importCategoryController = new ImportCategoryController();
 
 // routes
-
-categoriesRouters.use(ensureAuthenticated);
-categoriesRouters.post('/', createCategoryController.handle);
-
 categoriesRouters.get('/', listCategoriesController.handle);
 
-// eslint-disable-next-line prettier/prettier
-categoriesRouters.post('/imports', upLoad.single('file'), importCategoryController.handle);
+// routes authenticated
+categoriesRouters.post(
+  '/',
+  ensureAuthenticated,
+  ensureAdmin,
+  createCategoryController.handle
+);
+
+categoriesRouters.post(
+  '/imports',
+  upLoad.single('file'),
+  ensureAuthenticated,
+  ensureAdmin,
+  importCategoryController.handle
+);
 
 export { categoriesRouters };
