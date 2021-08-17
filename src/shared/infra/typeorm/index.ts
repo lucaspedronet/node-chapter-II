@@ -16,9 +16,12 @@ interface IOptions {
 export default async (host = 'database_ignite'): Promise<Connection> => {
   const defaultOption = await getConnectionOptions();
 
-  return createConnection(
-    Object.assign(defaultOption, {
-      host,
-    })
-  );
+  const configDatabase = Object.assign(defaultOption, {
+    host: 'localhost',
+    database: 'rentx_test_2',
+  });
+
+  // console.log('configDatabase', configDatabase);
+
+  return createConnection(configDatabase);
 };
