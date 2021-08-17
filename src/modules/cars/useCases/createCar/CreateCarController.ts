@@ -26,7 +26,7 @@ class CreateCarController {
       fine_amount,
     });
 
-    return response.status(201).send(car);
+    return response.status(201).json(car);
   }
 }
 

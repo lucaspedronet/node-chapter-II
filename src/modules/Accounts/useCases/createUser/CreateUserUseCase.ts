@@ -1,8 +1,8 @@
 import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 
-import { ICreateUser } from '@modules/Accounts/repositories/interfaces/ICreateUser';
-import { IUserRepository } from '@modules/Accounts/repositories/interfaces/IUserRepository';
+import { ICreateUser } from '@modules/accounts/repositories/interfaces/ICreateUser';
+import { IUserRepository } from '@modules/accounts/repositories/interfaces/IUserRepository';
 import { AppError } from '@shared/errors/AppError';
 
 @injectable()

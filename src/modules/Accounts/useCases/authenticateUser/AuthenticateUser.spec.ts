@@ -1,5 +1,5 @@
-import { UserRepositoryInMemory } from '@modules/Accounts/repositories/fakes-memory/UserRepositoryInMemory';
-import { ICreateUser } from '@modules/Accounts/repositories/interfaces/ICreateUser';
+import { UserRepositoryInMemory } from '@modules/accounts/repositories/fakes-memory/UserRepositoryInMemory';
+import { ICreateUser } from '@modules/accounts/repositories/interfaces/ICreateUser';
 import { AppError } from '@shared/errors/AppError';
 
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';

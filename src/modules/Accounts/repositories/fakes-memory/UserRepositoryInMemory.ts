@@ -1,6 +1,6 @@
 import { v4 as uuid4 } from 'uuid';
 
-import { User } from '@modules/Accounts/infra/typeorm/entities/Users';
+import { User } from '@modules/accounts/infra/typeorm/entities/Users';
 
 import { ICreateUser } from '../interfaces/ICreateUser';
 import { IUserRepository } from '../interfaces/IUserRepository';

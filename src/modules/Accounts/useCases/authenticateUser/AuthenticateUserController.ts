@@ -10,7 +10,7 @@ class AuthenticateUserController {
     const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase);
     const user = await authenticateUserUseCase.execute({ email, password });
 
-    return response.status(200).send(user);
+    return response.status(200).json(user);
   }
 }
 
