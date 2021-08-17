@@ -22,7 +22,7 @@ export default async (host = 'database_ignite'): Promise<Connection> => {
       process.env.NODE_ENV === 'test' ? 'rentx_test_2' : defaultOption.database,
   });
 
-  console.log('configDatabase', configDatabase);
+  // console.log('configDatabase', configDatabase);
 
   return createConnection(configDatabase);
 };

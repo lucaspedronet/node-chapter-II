@@ -5,7 +5,7 @@ import { Cars } from '@modules/cars/infra/typeorm/entities/Cars';
 import { ICarsRepository } from '@modules/cars/repositories/interfaces/ICarsRepository';
 
 @injectable()
-class ListCarsUseCase {
+class ListAvailableCarsUseCase {
   constructor(
     @inject('CarsRepository')
     private carsRepository: ICarsRepository
@@ -22,4 +22,4 @@ class ListCarsUseCase {
   }
 }
 
-export { ListCarsUseCase };
+export { ListAvailableCarsUseCase };

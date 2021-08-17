@@ -1,16 +1,16 @@
 import { CarsRepositoryFakeMemory } from '@modules/cars/repositories/fakes-memory/CarsRepositoryFakeMemory';
 
 import { CreateCarUseCase } from '../createCar/CreateCarUseCase';
-import { ListCarsUseCase } from './ListCarsUseCase';
+import { ListAvailableCarsUseCase } from './ListAvailableCarsUseCase';
 
 let createCarUseCase: CreateCarUseCase;
 let carsFakeMemory: CarsRepositoryFakeMemory;
-let listCars: ListCarsUseCase;
+let listCars: ListAvailableCarsUseCase;
 describe('List Cars', () => {
   beforeEach(() => {
     carsFakeMemory = new CarsRepositoryFakeMemory();
     createCarUseCase = new CreateCarUseCase(carsFakeMemory);
-    listCars = new ListCarsUseCase(carsFakeMemory);
+    listCars = new ListAvailableCarsUseCase(carsFakeMemory);
   });
 
   it('Should be able to List all available cars', async () => {
@@ -39,7 +39,7 @@ describe('List Cars', () => {
       category_id: '',
       name: '',
     });
-    console.log(cars);
+    // console.log(cars);
 
     expect(car1).toHaveProperty('id');
     expect(car2).toHaveProperty('id');
@@ -63,5 +63,44 @@ describe('List Cars', () => {
     });
 
     expect(cars).toEqual([car1]);
+    expect(cars[0].brand).toEqual('Fake_brand_03');
+  });
+
+  it('Should be able to List all available cars by name', async () => {
+    const car1 = await createCarUseCase.execute({
+      name: 'Car_04',
+      description: 'Description_Car_04',
+      daily_rate: 100,
+      license_plate: 'fake_04',
+      brand: 'Fake_brand_04',
+      fine_amount: 60,
+      category_id: 'category_04',
+    });
+
+    const cars = await listCars.execute({
+      name: 'Car_04',
+    });
+
+    expect(cars).toEqual([car1]);
+    expect(cars[0].name).toEqual('Car_04');
+  });
+
+  it('Should be able to List all available cars by category_id', async () => {
+    const car1 = await createCarUseCase.execute({
+      name: 'Car_05',
+      description: 'Description_Car_05',
+      daily_rate: 100,
+      license_plate: 'fake_05',
+      brand: 'Fake_brand_05',
+      fine_amount: 60,
+      category_id: 'fake_category_id_05',
+    });
+
+    const cars = await listCars.execute({
+      category_id: 'fake_category_id_05',
+    });
+
+    expect(cars).toEqual([car1]);
+    expect(cars[0].category_id).toEqual('fake_category_id_05');
   });
 });
