@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IUpdateUserAvatar } from '@modules/Accounts/repositories/interfaces/IUpdateUserAvatar';
-import { IUserRepository } from '@modules/Accounts/repositories/interfaces/IUserRepository';
+import { IUpdateUserAvatar } from '@modules/accounts/repositories/interfaces/IUpdateUserAvatar';
+import { IUserRepository } from '@modules/accounts/repositories/interfaces/IUserRepository';
 import { deleteFile } from '@utils/file';
 
 @injectable()

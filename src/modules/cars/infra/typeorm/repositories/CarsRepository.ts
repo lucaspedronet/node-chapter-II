@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO';
+import { IFilterCarsDTO } from '@modules/cars/dtos/IFilterCarsDTO';
 import { ICarsRepository } from '@modules/cars/repositories/interfaces/ICarsRepository';
 
 import { Cars } from '../entities/Cars';
@@ -10,6 +11,9 @@ class CarsRepository implements ICarsRepository {
 
   constructor() {
     this.carsRepository = getRepository(Cars);
+  }
+  findAvailable({ category_id, brand, name }: IFilterCarsDTO): Promise<Cars[]> {
+    throw new Error('Method not implemented.');
   }
   async create({
     name,

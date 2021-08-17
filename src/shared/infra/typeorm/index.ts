@@ -17,11 +17,12 @@ export default async (host = 'database_ignite'): Promise<Connection> => {
   const defaultOption = await getConnectionOptions();
 
   const configDatabase = Object.assign(defaultOption, {
-    host: 'localhost',
-    database: 'rentx_test_2',
+    host: process.env.NODE_ENV === 'test' ? 'localhost' : host,
+    database:
+      process.env.NODE_ENV === 'test' ? 'rentx_test_2' : defaultOption.database,
   });
 
-  // console.log('configDatabase', configDatabase);
+  console.log('configDatabase', configDatabase);
 
   return createConnection(configDatabase);
 };
