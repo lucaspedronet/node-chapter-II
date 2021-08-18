@@ -1,5 +1,3 @@
-import { v4 as uuid4 } from 'uuid';
-
 import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
 
 import {
@@ -11,14 +9,12 @@ class SpecificationsRepositoryFakeMemory implements ISpecificationsRepository {
   private specifications: Specification[] = [];
 
   async create({
-    id,
     name,
     description,
   }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = new Specification();
 
     Object.assign(specification, {
-      id: id || uuid4(),
       name,
       description,
     });

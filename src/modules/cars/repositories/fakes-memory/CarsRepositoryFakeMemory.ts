@@ -1,5 +1,3 @@
-import { v4 as uuid4 } from 'uuid';
-
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO';
 import { IFilterCarsDTO } from '@modules/cars/dtos/IFilterCarsDTO';
 import { Cars } from '@modules/cars/infra/typeorm/entities/Cars';
@@ -22,7 +20,7 @@ class CarsRepositoryFakeMemory implements ICarsRepository {
     const car = new Cars();
 
     Object.assign(car, {
-      id: id || uuid4(),
+      id,
       name,
       description,
       license_plate,

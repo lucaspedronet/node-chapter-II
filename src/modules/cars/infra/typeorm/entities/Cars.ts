@@ -8,6 +8,7 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from 'typeorm';
+import { v4 as uuid4 } from 'uuid';
 
 import { Category } from './Category';
 import { Specification } from './Specification';
@@ -38,17 +39,17 @@ class Cars {
   @Column()
   brand: string;
 
+  @ManyToMany(() => Specification)
+  @JoinTable({
+    name: 'specifications_cars',
+    joinColumns: [{ name: 'car_id' }],
+    inverseJoinColumns: [{ name: 'specification_id' }],
+  })
+  specifications: Specification[];
+
   @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
   category: Category;
-
-  @ManyToMany(() => Specification)
-  @JoinTable({
-    name: 'specifications_cars', // tabela de relacionamento entre specifications e cars
-    joinColumns: [{ name: 'card_id' }], // coluna que faz referência a tabela Cars
-    inverseJoinColumns: [{ name: 'specification_id' }], // coluna que faz referência a tabela Specifications
-  })
-  specifications: Specification[];
 
   @Column()
   category_id: string;
@@ -57,7 +58,10 @@ class Cars {
   created_at: Date;
 
   constructor() {
-    this.available = true;
+    if (!this.id) {
+      this.id = uuid4();
+      this.available = true;
+    }
   }
 }
 

@@ -6,9 +6,9 @@ import {
 } from 'typeorm';
 
 export class CreateSpecificationsCars1629256227507
-  implements MigrationInterface {
+  implements MigrationInterface
+{
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`);
     await queryRunner.createTable(
       new Table({
         name: 'specifications_cars',

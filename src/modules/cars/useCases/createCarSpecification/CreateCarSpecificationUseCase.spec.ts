@@ -12,7 +12,8 @@ let createCarSpecificationUseCase: CreateCarSpecificationUseCase;
 describe('Create Car Specification', () => {
   beforeEach(() => {
     carsRepositoryFakeMemory = new CarsRepositoryFakeMemory();
-    specificationsRepositoryFakeMemory = new SpecificationsRepositoryFakeMemory();
+    specificationsRepositoryFakeMemory =
+      new SpecificationsRepositoryFakeMemory();
 
     createCarUseCase = new CreateCarUseCase(carsRepositoryFakeMemory);
     createCarSpecificationUseCase = new CreateCarSpecificationUseCase(

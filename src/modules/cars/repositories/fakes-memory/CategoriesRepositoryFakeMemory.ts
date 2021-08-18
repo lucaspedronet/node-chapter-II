@@ -1,5 +1,3 @@
-import { v4 as uuid4 } from 'uuid';
-
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 
 import {
@@ -16,7 +14,6 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
     Object.assign(newCategory, {
       description,
       name,
-      id: uuid4(),
     });
 
     await this.repository.push(newCategory);
