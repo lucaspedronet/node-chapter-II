@@ -10,6 +10,7 @@ class CarsRepositoryFakeMemory implements ICarsRepository {
   private cars: Cars[] = [];
 
   async create({
+    id,
     name,
     description,
     license_plate,
@@ -21,7 +22,7 @@ class CarsRepositoryFakeMemory implements ICarsRepository {
     const car = new Cars();
 
     Object.assign(car, {
-      id: uuid4(),
+      id: id || uuid4(),
       name,
       description,
       license_plate,
@@ -63,6 +64,11 @@ class CarsRepositoryFakeMemory implements ICarsRepository {
     }
 
     return listCars;
+  }
+
+  async findById(carId: string): Promise<Cars> {
+    const car = await this.cars.find((car) => car.id === carId);
+    return car;
   }
 }
 
