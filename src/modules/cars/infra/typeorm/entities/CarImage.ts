@@ -18,6 +18,7 @@ class CarImage {
   constructor() {
     if (!this.id) {
       this.id = uuid4();
+      this.created_at = new Date();
     }
   }
 }
