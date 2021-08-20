@@ -1,15 +1,21 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { UseCase } from './UseCase';
+import { CreateRentalUseCase } from './CreateRentalUseCase';
 
 class CreateRentalController {
-  handle(request: Request, response: Response): Response {
-    const {} = request.body;
-    const useUseCase = container.resolve(UseCase);
-    useUseCase.execute({});
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { expectedReturnDate, carId } = request.body;
+    const { userId } = request.query;
 
-    return response.status(201).send();
+    const createRentalUseCase = container.resolve(CreateRentalUseCase);
+    const rental = await createRentalUseCase.execute({
+      car_id: carId,
+      user_id: userId as string,
+      expected_return_date: new Date(expectedReturnDate),
+    });
+
+    return response.status(201).json(rental);
   }
 }
 

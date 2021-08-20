@@ -10,7 +10,12 @@ import { ICarsImagesRepository } from '@modules/cars/repositories/interfaces/ICa
 import { ICarsRepository } from '@modules/cars/repositories/interfaces/ICarsRepository';
 import { ICategoriesRepository } from '@modules/cars/repositories/interfaces/ICategoriesRepository';
 import { ISpecificationsRepository } from '@modules/cars/repositories/interfaces/ISpecificationsRepository';
-// Users
+// Rentals
+import { RentalsRepository } from '@modules/rentals/infra/typeorm/repositories/RentalsRepository';
+import { IRentalsRepository } from '@modules/rentals/repositories/interfaces/IRentalsRepository';
+// Provider Date
+import { DateFnsProvider } from '@shared/container/providers/DateProviders/DateFns/implementations/DateFnsProvider';
+import { IDateProvider } from '@shared/container/providers/DateProviders/DateFns/Interfaces/IDateProvider';
 
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
@@ -30,3 +35,10 @@ container.registerSingleton<ICarsImagesRepository>(
 container.registerSingleton<IUserRepository>('UsersRepository', UserRepository);
 
 container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository);
+
+container.registerSingleton<IRentalsRepository>(
+  'RentalsRepository',
+  RentalsRepository
+);
+
+container.registerSingleton<IDateProvider>('DateProvider', DateFnsProvider);
