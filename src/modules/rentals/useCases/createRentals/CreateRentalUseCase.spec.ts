@@ -10,7 +10,8 @@ let dateFnsDateProvider: DateFnsProvider;
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepository: RentalsRepositoryFakeMemory;
 describe('Create Rental', () => {
-  const dayAdd24Hours = add(new Date(), { days: 1 }); // '2021-08-19:12:00'
+  const dayAdd24Hours = add(new Date(), { minutes: 1441 }); // 1h e 1min
+  // console.log('dayAdd24Hours: ', dayAdd24Hours);
 
   beforeEach(() => {
     dateFnsDateProvider = new DateFnsProvider();

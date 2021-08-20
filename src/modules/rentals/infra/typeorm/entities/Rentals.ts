@@ -1,11 +1,13 @@
 import {
   Column,
   CreateDateColumn,
+  Entity,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuid4 } from 'uuid';
 
+@Entity('rentals')
 class Rental {
   @PrimaryColumn('uuid')
   id: string;
@@ -37,7 +39,6 @@ class Rental {
   constructor() {
     if (!this.id) {
       this.id = uuid4();
-      this.created_at = new Date();
     }
   }
 }

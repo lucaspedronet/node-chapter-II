@@ -1,4 +1,3 @@
-import { formatISO, differenceInHours } from 'date-fns';
 import { inject, injectable } from 'tsyringe';
 
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rentals';
@@ -12,10 +11,13 @@ type IRequest = {
   expected_return_date: Date;
 };
 
+@injectable()
 class CreateRentalUseCase {
   constructor(
+    @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository,
 
+    @inject('DateProvider')
     private dateProvider: IDateProvider
   ) {}
 
@@ -24,7 +26,7 @@ class CreateRentalUseCase {
     user_id,
     expected_return_date,
   }: IRequest): Promise<Rental> {
-    const MINIM_HOUR = 24;
+    const MINIM_HOUR = 24; // hours minim
     /**
      * - O aluguél DEVE ter duração MÍNIMA de 24 HORAS.
      * - NÃO DEVE ser possível cadastrar um novo aluguél caso já exista um aberto para o mesmo usuário.
@@ -47,14 +49,10 @@ class CreateRentalUseCase {
       throw new AppError("There's a rental in progresses to user!");
     }
 
-    const dateNow = this.dateProvider.convertToUTC(new Date());
-
-    const expectedReturnDateFormatted =
-      this.dateProvider.convertToUTC(expected_return_date);
-
+    const dateNow = this.dateProvider.dateNow();
     const compareDifferenceHours = this.dateProvider.compareInHours(
-      dateNow,
-      expectedReturnDateFormatted
+      expected_return_date,
+      dateNow
     );
 
     if (compareDifferenceHours < MINIM_HOUR) {

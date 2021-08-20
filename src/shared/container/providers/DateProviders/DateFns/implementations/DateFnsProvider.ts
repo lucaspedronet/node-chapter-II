@@ -1,19 +1,26 @@
-import { formatISO, differenceInHours } from 'date-fns';
+import { differenceInHours, parseISO } from 'date-fns';
 
 import { IDateProvider } from '../Interfaces/IDateProvider';
 
 class DateFnsProvider implements IDateProvider {
-  compareInHours(start_date: Date, end_date: Date): number {
+  public compareInHours(dateLeft: Date, dateRight: Date): number {
     const compareDifferenceHours = differenceInHours(
-      new Date(end_date),
-      new Date(start_date)
+      this.convertToUTC(dateLeft),
+      this.convertToUTC(dateRight)
     );
+
+    // console.log('compareDifferenceHours', compareDifferenceHours);
 
     return compareDifferenceHours;
   }
-  convertToUTC(date: Date): Date {
-    const dateUTC = new Date(formatISO(date));
+
+  public convertToUTC(date: Date): Date {
+    const dateUTC = parseISO(date.toISOString());
     return dateUTC;
+  }
+
+  public dateNow(): Date {
+    return new Date();
   }
 }
 
